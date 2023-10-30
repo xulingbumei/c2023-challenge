@@ -1,6 +1,16 @@
-#include <printf.h>
-
+#include <stdio.h>
+#include <string.h>
+#include <windows.h>
 int main() {
-    printf("hello world!\n");
+    char str[]="hello world!";
+    int i=0;
+    while (i<strlen(str)) {
+        printf("%s",i+str);
+        Sleep(500);
+        system("cls");
+        i++;
+    }
     return 0;
 }
+ "邮箱"
+ "名称"
