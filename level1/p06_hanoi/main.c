@@ -2,7 +2,7 @@
 
 void move(char A, char C, int n)
 {
-    printf("%c--->%c\n",  A, C);
+    printf("take the %d plate %c--->%c\n",n,  A, C);
 }
 
 void HanoiTower(char A, char B, char C, int n)
