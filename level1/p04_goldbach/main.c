@@ -14,22 +14,20 @@ int is_prime(int n) {
 }
 
 int main() {
-    int n;
-    printf("Enter an even number greater than 2: ");
-    scanf("%d", &n);
-    if (n <= 2 || n % 2 != 0) {
-        printf("Invalid input.\n");
+    int n = 100, j = 2;
+    int flag = 0;
+    while (j <= n) {
+        for (int i = 2; i <= n / 2; i++) {
+            if (is_prime(i) && is_prime(n - i)) {
+                printf("%d = %d + %d\n", n, i, n - i);
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            printf("Failed to verify Goldbach's conjecture.\n");
+        }
+        j++;
         return 0;
     }
-    int flag = 0;
-    for (int i = 2; i <= n / 2; i++) {
-        if (is_prime(i) && is_prime(n - i)) {
-            printf("%d = %d + %d\n", n, i, n - i);
-            flag = 1;
-        }
-    }
-    if (flag == 0) {
-        printf("Failed to verify Goldbach's conjecture.\n");
-    }
-    return 0;
+
 }
