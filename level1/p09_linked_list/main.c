@@ -30,7 +30,7 @@ int search_forseconmdfive(linked_list * P,int ii){
 }
 int main()
 {
-    int n,number1,number2;
+    int n,number1,number2,n3nomean;
     linked_list *head=NULL,*p1=NULL;
     printf("put a number that bigger than five\n");
     scanf("%d",&n);
