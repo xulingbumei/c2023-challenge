@@ -3,7 +3,7 @@
 #include<conio.h>//_getch()//输入一个按键，才执行下一个语句
 #include <Windows.h>
 
-//chuansong
+//
 const WORD FORE_BLUE = FOREGROUND_BLUE;
 const WORD FORE_GREEN = FOREGROUND_GREEN;
 const WORD FORE_RED = FOREGROUND_RED;
