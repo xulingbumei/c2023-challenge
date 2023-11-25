@@ -1,16 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<conio.h>//_getch()//输入一个按键，才执行下一个语句
+#include<conio.h>//_getch()//����һ����������ִ����һ�����
 #include <Windows.h>
 
-/*
-实现思路：
-1.地图的实现（空地  墙壁  人  箱子  目标点 ）
-2.人物的移动
-3.人物推箱子
-4.胜利的判断（地图上没有箱子了）
-5.关卡的实现
-*/
+
 const WORD FORE_BLUE = FOREGROUND_BLUE;
 const WORD FORE_GREEN = FOREGROUND_GREEN;
 const WORD FORE_RED = FOREGROUND_RED;
@@ -26,11 +19,11 @@ const WORD BACK_CYAN = BACK_BLUE | BACK_GREEN;
 const WORD BACK_YELLOW = BACK_RED | BACK_GREEN;
 const WORD BACK_GRAY = BACKGROUND_INTENSITY;
 
-//空地 0 墙壁 1 人 2 箱子 3 目标点 4
-//关卡数组Map 三维数组
+//�յ� 0 ǽ�� 1 �� 2 ���� 3 Ŀ��� 4
+//�ؿ�����Map ��ά����
 int Map[3][10][10] =
         {
-                {//第一关
+                {//��һ��
                         {1,1,1,1,1,1,1,1,1,1},
                         {1,2,0,1,0,1,0,0,0,1},
                         {1,0,0,1,0,0,0,0,0,1},
@@ -41,7 +34,7 @@ int Map[3][10][10] =
                         {1,0,0,0,3,0,4,0,0,1},
                         {1,0,0,0,0,0,0,0,0,1},
                         {1,1,1,1,1,1,1,1,1,1}, },
-                {//第二关
+                {//�ڶ���
                         {1,1,1,1,1,1,1,1,1,1},
                         {1,2,0,0,0,0,0,0,0,1},
                         {1,0,0,0,0,0,0,1,0,1},
@@ -52,7 +45,7 @@ int Map[3][10][10] =
                         {1,0,0,0,3,0,4,0,0,1},
                         {1,0,0,0,0,0,0,0,0,1},
                         {1,1,1,1,1,1,1,1,1,1}, },
-                {//第三关
+                {//������
                         {1,1,1,1,1,1,1,1,1,1},
                         {1,2,0,0,0,0,0,0,0,1},
                         {1,0,0,0,0,0,0,0,0,1},
@@ -69,15 +62,15 @@ int maparr[10][10] = { 0 };
 
 
 void initGame();
-//地图加载函数
+//��ͼ���غ���
 void initMap();
-//绘制函数
+//���ƺ���
 void drawMap();
-//更新游戏数据
+//������Ϸ����
 void runGame();
-//人物的移动函数
+//������ƶ�����
 void moveInmap(int off_x, int off_y);
-//结束函数
+//��������
 int endGame();
 
 
@@ -97,22 +90,22 @@ int main()
     {
         level++;
         if (level != 3)
-            printf("恭喜通过本关，按任意键进入下一关\n");
+            printf("��ϲͨ�����أ��������������һ��\n");
         goto L;
     }
-    printf("游戏胜利\n");
+    printf("��Ϸʤ��\n");
     return 0;
 }
-//初始化游戏
+//��ʼ����Ϸ
 void initGame()
 {
-    printf("\n\n\n    推箱子--按任意键开始");
+    printf("\n\n\n    ������--���������ʼ");
     _getch();
 }
-//地图加载函数
+//��ͼ���غ���
 void initMap()
 {
-    //加载当前关卡地图
+    //���ص�ǰ�ؿ���ͼ
     for (int i = 0; i < 10; i++)
     {
         for (int j = 0; j < 10; j++)
@@ -134,22 +127,22 @@ void drawMap()
                     printf(" ");
                     break;
                 case 1:
-                    printf("■");
+                    printf("��");
                     break;
                 case 2:
-                    printf("♀");
+                    printf("��");
                     break;
                 case 3:
-                    printf("●");
+                    printf("��");
                     break;
                 case 4:
-                    printf("☆");
+                    printf("��");
                     break;
                 case 2 + 4:
-                    printf("♀");
+                    printf("��");
                     break;
                 case 3 + 4:
-                    printf("★");
+                    printf("��");
                     break;
                 default:
                     break;
@@ -158,7 +151,7 @@ void drawMap()
         printf("\n");
     }
 }
-//更新游戏数据
+//������Ϸ����
 void runGame()
 {
 
@@ -188,7 +181,7 @@ void runGame()
 
 }
 
-//人物的移动函数
+//������ƶ�����
 void moveInmap(int off_x, int off_y)
 {
 
@@ -209,18 +202,18 @@ void moveInmap(int off_x, int off_y)
     }
 
 
-    //移动
+    //�ƶ�
     if (0 == maparr[playerPos_X + off_x][playerPos_Y + off_y] ||
-        4 == maparr[playerPos_X + off_x][playerPos_Y + off_y])//空地、目标点
+        4 == maparr[playerPos_X + off_x][playerPos_Y + off_y])//�յء�Ŀ���
     {
         maparr[playerPos_X][playerPos_Y] -= 2;
         maparr[playerPos_X + off_x][playerPos_Y + off_y] += 2;
     }
     else if (3 == maparr[playerPos_X + off_x][playerPos_Y + off_y] ||
-             3 + 4 == maparr[playerPos_X + off_x][playerPos_Y + off_y])//箱子、箱子在点上
+             3 + 4 == maparr[playerPos_X + off_x][playerPos_Y + off_y])//���ӡ������ڵ���
     {
         if (0 == maparr[playerPos_X + off_x * 2][playerPos_Y + off_y * 2] ||
-            4 == maparr[playerPos_X + off_x * 2][playerPos_Y + off_y * 2])//空地、目标点
+            4 == maparr[playerPos_X + off_x * 2][playerPos_Y + off_y * 2])//�յء�Ŀ���
         {
             maparr[playerPos_X][playerPos_Y] -= 2;
             maparr[playerPos_X + off_x][playerPos_Y + off_y] += (2 - 3);
@@ -228,10 +221,10 @@ void moveInmap(int off_x, int off_y)
         }
     }
 }
-//结束函数
+//��������
 int endGame()
 {
-    //遍历
+    //����
     for (int i = 0; i < 10; i++)
     {
         for (int j = 0; j < 10; j++)
