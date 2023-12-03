@@ -213,7 +213,12 @@ int main() {
             }
             printf("\n按任意键继续\n");
             system("pause");
+        }else if(j==2){
+
         }else if(j==5){
+            print1(head1);
+        }
+        else if(j==5){
             break;
         }
     }
