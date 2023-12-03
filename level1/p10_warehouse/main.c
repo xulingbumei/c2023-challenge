@@ -74,7 +74,7 @@ struct product* creat1(int n, struct product* h)
     return(head);
 };
 
-struct product* conect1(struct product* p1_c1, struct product* p2_c1)//?????????????????
+struct product* conect1(struct product* p1_c1, struct product* p2_c1)
 {
     struct product* p3_c1 = NULL;
     p3_c1 = p1_c1;
@@ -89,7 +89,7 @@ struct product* conect1(struct product* p1_c1, struct product* p2_c1)//?????????
     return (p3_c1);
 }
 
-void print1(struct product* head)//??????????????
+void print1(struct product* head)
 {
     struct product* p1_h = NULL;
     int i;
@@ -108,7 +108,7 @@ void print1(struct product* head)//??????????????
 }
 
 
-struct product* load(struct product* head)//????????????????
+struct product* load(struct product* head)
 {
     FILE* fp_l;
     if ((fp_l = fopen("C:\\Users\\ying\\CLionProjects\\c2023-challenge\\level1\\p10_warehouse\\数据\\menu.txt", "r")) == NULL) {
@@ -186,13 +186,17 @@ int main() {
     struct purchase* form1 = NULL, * form2 = NULL, * flag2 = NULL;
     int n, i, j = 0;
     head1 = load(head1);
-    while (j != 11) {
+    while (j != 5) {
         system("cls");//?????????????????
         printf("______________________________________________________________________\n");
         printf("....................欢迎使用商品进销管理系统..........................\n");
         printf("______________________________________________________________________\n");
         printf(".                    您可以继续进行的操作如下:                       .\n");
         printf(".                        1.录入商品信息                       .\n");
+        printf(".                        2.商品入库                          .\n");
+        printf(".                        3.商品出库                          .\n");
+        printf(".                        4.输出所有商品信息                    .\n");
+        printf(".                        5.退出程序                          .\n");
         printf("______________________________________________________________________\n");
         printf("请输入数字进行操作:");
         scanf("%d", &j);
@@ -209,8 +213,11 @@ int main() {
             }
             printf("\n按任意键继续\n");
             system("pause");
-
+        }else if(j==5){
+            break;
         }
     }
+    flag=write(head1);
+    printf("----------感谢使用----------\n");
     return 0;
 }
