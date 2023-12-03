@@ -10,30 +10,30 @@ static int shu = 0;
 
 struct product
 {
-    int id;                     //ÉÌÆ·±àºÅ
-    char name[20];              //ÉÌÆ·Ãû³Æ
-    double price;               //ÉÌÆ·µ¥¼Û
-    int stock;                  //ÉÌÆ·¿â´æ
-    struct product* next;       //Ö¸ÏòÏÂÒ»¸öÉÌÆ·ĞÅÏ¢µÄÖ¸Õë
+    int id;
+    char name[20];
+    double price;
+    int stock;
+    struct product* next;
 };
 
 struct sales
 {
-    int id;                     //ÉÌÆ·ID
-    double pri;                 //ÏúÊÛ¼Û¸ñ
-    int quantity;               //ÏúÊÛÁ¿
-    struct sales* next;         //Ö¸ÏòÏÂÒ»¸öÏúÊÛĞÅÏ¢µÄÖ¸Õë
+    int id;
+    double pri;
+    int quantity;
+    struct sales* next;
 };
 
 struct purchase
 {
-    int id;                     //ÉÌÆ·ID
-    double pr;                  //½ø»õ¼Û¸ñ
-    int num;                    //½ø»õÁ¿
-    struct purchase* next;      //Ö¸ÏòÏÂÒ»¸ö½ø»õĞÅÏ¢µÄÖ¸Õë
+    int id;
+    double pr;
+    int num;
+    struct purchase* next;
 };
 
-struct product* creat1(int n, struct product* h)//´´½¨ÉÌÆ·ĞÅÏ¢Á´±í
+struct product* creat1(int n, struct product* h)
 {
     struct product* head = NULL, * p1 = NULL, * p2 = NULL, * p3 = NULL;
     int i, j, f = 0;
@@ -41,11 +41,11 @@ struct product* creat1(int n, struct product* h)//´´½¨ÉÌÆ·ĞÅÏ¢Á´±í
     for (i = 1; i <= n; i++)
     {
         p1 = (struct product*)malloc(LEN1);
-        printf("ÇëÊäÈëÉÌÆ·±àºÅ:");
+        printf("ÊäÈëÉÌÆ·±àºÅ:");
         scanf("%d", &j);
         while (p3) {
             if (p3->id == j) {
-                printf("ÒÔ´æÔÚÏàÍ¬IDÉÌÆ·,Çë¸ü»»IDÖØĞÂÊäÈë!");
+                printf("ÒÑ´æÔÚÏàÍ¬±àºÅµÄÉÌÆ·!");
                 p3 = NULL;
                 f = 1;
                 break;
@@ -60,11 +60,11 @@ struct product* creat1(int n, struct product* h)//´´½¨ÉÌÆ·ĞÅÏ¢Á´±í
             continue;
         }
         p1->id = j;
-        printf("ÇëÊäÈëÉÌÆ·Ãû×Ö:");
+        printf("ÊäÈëÉÌÆ·µÄÃû×Ö:");
         scanf("%s", &p1->name);
-        printf("ÇëÊäÈëÉÌÆ·¼Û¸ñ:");
+        printf("ÊäÈëÉÌÆ·µÄ¼Û¸ñ:");
         scanf("%lf", &p1->price);
-        printf("ÇëÊäÈëÉÌÆ·¿â´æ:");
+        printf("ÊäÈëÉÌÆ·µÄ¿â´æÊıÁ¿:");
         scanf("%d", &p1->stock);
         p1->next = NULL;
         if (i == 1) head = p1;
@@ -74,7 +74,7 @@ struct product* creat1(int n, struct product* h)//´´½¨ÉÌÆ·ĞÅÏ¢Á´±í
     return(head);
 };
 
-struct product* conect1(struct product* p1_c1, struct product* p2_c1)//ÉÌÆ·ĞÅÏ¢Á´±íÁ´½Óº¯Êı
+struct product* conect1(struct product* p1_c1, struct product* p2_c1)//?????????????????
 {
     struct product* p3_c1 = NULL;
     p3_c1 = p1_c1;
@@ -89,7 +89,7 @@ struct product* conect1(struct product* p1_c1, struct product* p2_c1)//ÉÌÆ·ĞÅÏ¢Á
     return (p3_c1);
 }
 
-void print1(struct product* head)//´òÓ¡ÉÌÆ·ĞÅÏ¢µÄº¯Êı
+void print1(struct product* head)//??????????????
 {
     struct product* p1_h = NULL;
     int i;
@@ -97,8 +97,8 @@ void print1(struct product* head)//´òÓ¡ÉÌÆ·ĞÅÏ¢µÄº¯Êı
     while (p1_h != NULL) {
         printf("__________________________\n");
         printf("|ÉÌÆ·ID:%d               \n", p1_h->id);
-        printf("|ÉÌÆ·Ãû×Ö:%s             \n", p1_h->name);
-        printf("|ÉÌÆ·¼Û¸ñ:%lf            \n", p1_h->price);
+        printf("|ÉÌÆ·Ãû³Æ:%s             \n", p1_h->name);
+        printf("|ÉÌÆ·¼Û¸ñ%lf            \n", p1_h->price);
         printf("|ÉÌÆ·¿â´æ:%d             \n", p1_h->stock);
         printf("__________________________\n\n");
         p1_h = p1_h->next;
@@ -108,25 +108,25 @@ void print1(struct product* head)//´òÓ¡ÉÌÆ·ĞÅÏ¢µÄº¯Êı
 }
 
 
-struct product* load(struct product* head)//ÉÌÆ·ĞÅÏ¢ÎÄ¼ş¼ÓÔØº¯Êı
+struct product* load(struct product* head)//????????????????
 {
     FILE* fp_l;
-    if ((fp_l = fopen("menu.txt", "r")) == NULL) {
-        printf("¼ÓÔØÉÌÆ·ĞÅÏ¢ÎÄµµ³ö´í¡£\n");
+    if ((fp_l = fopen("C:\\Users\\ying\\CLionProjects\\c2023-challenge\\level1\\p10_warehouse\\Êı¾İ\\menu.txt", "r")) == NULL) {
+        printf("¼ÓÔØÉÌÆ·ĞÅÏ¢ÎÄµµÊ§°Ü\n");
         exit(1);
     }
     else {
-        printf("¼ÓÔØÉÌÆ·ĞÅÏ¢ÎÄµµ³É¹¦¡£\n\n\n");
+        printf("¼ÓÔØÉÌÆ·ĞÅÏ¢ÎÄµµ³É¹¦\n\n\n");
     }
     int flag = 1;
-    int id_t;                     //ÉÌÆ·±àºÅ
-    char name_t[20];              //ÉÌÆ·Ãû³Æ
-    double price_t;               //ÉÌÆ·µ¥¼Û
-    int stock_t;                  //ÉÌÆ·¿â´æ
+    int id_t;
+    char name_t[20];
+    double price_t;
+    int stock_t;
     struct product* p1_lo = NULL, * p2_lo = NULL, * p3_lo = NULL;
     p2_lo = (struct product*)malloc(LEN1);
     p2_lo->next = NULL;
-    while (!feof(fp_l))//¼ì²âÎÄ¼şÊÇ·ñ½áÊø
+    while (!feof(fp_l))//????????????
     {
         fscanf(fp_l, "%d", &id_t);
         fscanf(fp_l, "%s", name_t);
@@ -159,12 +159,12 @@ struct product* load(struct product* head)//ÉÌÆ·ĞÅÏ¢ÎÄ¼ş¼ÓÔØº¯Êı
 
 
 
-struct product* write(struct product* head_wr)//ÉÌÆ·ĞÅÏ¢Ğ´Èëº¯Êı
+struct product* write(struct product* head_wr)
 {
     FILE* fp_wr;
     struct product* p1_wr = NULL;
-    if ((fp_wr = fopen("menu.txt", "w+")) == NULL) {
-        printf("¼ÓÔØÎÄµµ³ö´í¡£\n");
+    if ((fp_wr = fopen("C:\\Users\\ying\\CLionProjects\\c2023-challenge\\level1\\p10_warehouse\\Êı¾İ\\menu.txt", "w+")) == NULL) {
+        printf("Êı¾İÎÄµµ¼ÓÔØÊ§°Ü\n");
         exit(1);
     }
     while (head_wr != NULL) {
@@ -187,37 +187,27 @@ int main() {
     int n, i, j = 0;
     head1 = load(head1);
     while (j != 11) {
-        system("cls");//ÇåÆÁ²Ù×÷£¬ÒÔÏÂÍ¬Àí
+        system("cls");//?????????????????
         printf("______________________________________________________________________\n");
         printf("....................»¶Ó­Ê¹ÓÃÉÌÆ·½øÏú¹ÜÀíÏµÍ³..........................\n");
         printf("______________________________________________________________________\n");
-        printf(".                    Äú¿ÉÒÔ¼ÌĞø½øĞĞµÄ²Ù×÷ÊÇ:                       .\n");
-        printf(".                        1.Â¼ÈëÉÌÆ·ĞÅÏ¢¡£                        .\n");
-        printf(".                      2.Â¼ÈëÉÌÆ·½ø»õĞÅÏ¢¡£                        .\n");
-        printf(".                      3.Â¼ÈëÉÌÆ·ÏúÊÛĞÅÏ¢¡£                          .\n");
-        printf(".                        4.²éÕÒÉÌÆ·ĞÅÏ¢¡£                          .\n");
-        printf(".                        5.É¾³ıÉÌÆ·ĞÅÏ¢¡£                          .\n");
-        printf(".                        6.ĞŞ¸ÄÉÌÆ·ĞÅÏ¢¡£                          .\n");
-        printf(".                         7.Í³¼ÆÏúÊÛ¶î¡£                           .\n");
-        printf(".                         8.Í³¼Æ½ø»õ¶î¡£                           .\n");
-        printf(".                      9.°´¼Û¸ñÉıĞòÅÅÁĞÉÌÆ·¡£                      .\n");
-        printf(".                      10.´òÓ¡ËùÓĞÉÌÆ·ĞÅÏ¢¡£                       .\n");
-        printf(".                          11.½áÊø³ÌĞò¡£                           .\n");
+        printf(".                    Äú¿ÉÒÔ¼ÌĞø½øĞĞµÄ²Ù×÷ÈçÏÂ:                       .\n");
+        printf(".                        1.Â¼ÈëÉÌÆ·ĞÅÏ¢                       .\n");
         printf("______________________________________________________________________\n");
-        printf("ÇëÊäÈë1¡¢2¡¢3¡¢4¡¢5¡¢6¡¢7¡¢8¡¢9¡¢10¡¢11À´½øĞĞ¶ÔÓ¦²Ù×÷¡£\nÇëÎÊÄúÒª½øĞĞµÄ²Ù×÷ÊÇ:");
+        printf("ÇëÊäÈëÊı×Ö½øĞĞ²Ù×÷:");
         scanf("%d", &j);
-        printf("\n¼´½«Ö´ĞĞ²Ù×÷%c......", j);
+        printf("\nµÈ´ıÖĞ......", j);
         printf("......................................................................\n\n\n\n\n\n\n");
         system("cls");
         if (j == 1) {
             head2 = creat1(1, head1);
-            if (head1) {//ÅĞ¶ÏÊÇ·ñÒÑ¾­Éú³ÉÁ´±í
-                head1 = conect1(head1, head2);//½«ĞÂÁ´±íÓë¾ÉÁ´±íÁ´½Ó
+            if (head1) {
+                head1 = conect1(head1, head2);
             }
             else {
                 head1 = head2;
             }
-            printf("\n°´ÈÎÒâ¼ü¼ÌĞø......\n");
+            printf("\n°´ÈÎÒâ¼ü¼ÌĞø\n");
             system("pause");
 
         }
