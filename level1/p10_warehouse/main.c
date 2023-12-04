@@ -72,23 +72,25 @@ struct product *save1(struct product *p1,int q,int s)//оЗйшилф╥й╠╦д╠Дилф╥пео╒жп╣
     }
     return p2_sa;//╥╣╩ь©уж╦уК
 }
-struct product *save2(struct product*p1,int q,int s)//╫Ь╩Уй╠пч╦дилф╥пео╒жп╣дилф╥йЩ
-        {
-   struct product *pm=NULL,*p2=NULL;
-   pm=p1;
-   int flag=0;
-   while(pm!=NULL){
-       if(pm->id==q){
-           pm->stock+=s;
-           flag=1;
-           break;
-       }
-       pm=pm->next;
-   }
-   if(!flag){
-       printf("н╢ур╣╫╤тс╕илф╥ё╛гКохб╪хКилф╥пео╒╩Руъ╪Л╡Иилф╥IDйг╥Я╢МнС\n");
-   }
-   return p2;
+struct product *save2(struct product*p1,int q,int s);//╫Ь╩Уй╠пч╦дилф╥пео╒жп╣дилф╥йЩ
+struct product *save2(struct product*p1,int q,int s)
+{
+    struct product *pm=NULL,*p2=NULL;
+    pm=p1;
+    int i=0;
+    while (pm!=NULL)//ур╣╫╤тс╕илф╥
+    {
+        if(pm->id==q){
+            pm->stock+=s;
+            i=1;
+            break;
+        }
+        pm=pm->next;
+    }
+    if(!i){
+        printf("н╢ур╣╫╤тс╕илф╥,гКохб╪хКилф╥пео╒╩Р╪Л╡Иилф╥IDйг╥Я╢МнС!\n");
+    }
+    return p2;
 }
 
 
