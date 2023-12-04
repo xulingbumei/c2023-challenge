@@ -52,7 +52,7 @@ struct purchase *load_pu(struct purchase *head);//商品进货信息文件加载函数
 
 struct product* write(struct product* head_wr);
 
-
+struct product *save1(struct product *p1,int q,int s);
 struct product *save1(struct product *p1,int q,int s)//销售商品时改变商品信息中的商品数
 {
     struct product *pm=NULL,*p2_sa=NULL;
