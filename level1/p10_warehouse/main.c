@@ -5,7 +5,7 @@
 #define LEN1 sizeof(struct product)
 #define LEN2 sizeof(struct sales)
 #define LEN3 sizeof(struct purchase)
-
+//
 static int shu = 0;
 
 struct product//¼ÇÂ¼¿â´æÉÌÆ·
